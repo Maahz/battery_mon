@@ -8,6 +8,9 @@ import win10toast
 
 BATTERY_LOW_PERCENTAGE = 20
 
+# Run the script in the background
+
+
 # Create a ToastNotifier object
 toaster = win10toast.ToastNotifier()
 
