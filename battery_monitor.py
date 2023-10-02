@@ -3,13 +3,15 @@ This module monitors the battery percentage of a Windows PC and
 displays a notification when the battery is low.
 """
 import sys
+import time
 import psutil
 import win10toast
 
+import console
+
 BATTERY_LOW_PERCENTAGE = 20
 
-# Run the script in the background
-
+console.hide_console()
 
 # Create a ToastNotifier object
 toaster = win10toast.ToastNotifier()
@@ -38,3 +40,4 @@ while True:
     if is_battery_low():
         toaster.show_toast("Battery Low", "Your battery is at " + get_battery_percentage() + "%", duration=10)
         sys.exit()
+    time.sleep(10)
