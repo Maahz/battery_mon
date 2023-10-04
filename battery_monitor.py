@@ -11,7 +11,7 @@ import console
 
 BATTERY_LOW_PERCENTAGE = 20
 
-console.hide_console()
+console.hide()
 
 # Create a ToastNotifier object
 toaster = win10toast.ToastNotifier()
@@ -21,7 +21,7 @@ def get_battery_percentage():
     Returns the current battery percentage of the PC.
     """
     battery = psutil.sensors_battery()
-    percent = str(battery.percent)
+    percent = int(battery.percent)
     return percent
 
 def is_battery_low():
@@ -38,6 +38,6 @@ def is_battery_low():
 
 while True:
     if is_battery_low():
-        toaster.show_toast("Battery Low", "Your battery is at " + get_battery_percentage() + "%", duration=10)
+        toaster.show_toast("Battery Low", "Your battery is at " + str(get_battery_percentage()) + "%", duration=10)
         sys.exit()
     time.sleep(10)
